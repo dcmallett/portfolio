@@ -1,117 +1,71 @@
-"use client"
-import Link from 'next/link'
-import { useState } from 'react'
+"use client";
+import { useState } from "react";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { IoCloseSharp } from "react-icons/io5";
 
 const Header = () => {
-  const [isMobileMenuOpen, setisMobileMenuOpen] = useState(false)
+	const [currentSection, setCurrentSection] = useState("home");
+	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+	const navItems = [
+		{ name: "Home", id: "home" },
+		{ name: "About", id: "about" },
+		{ name: "Projects", id: "projects" },
+		{ name: "Contact", id: "contact" },
+	];
 
-  const toggleMobileMenu = () => {  
-    setisMobileMenuOpen(!isMobileMenuOpen)
-  }
+	return (
+		<header className="bg-white shadow-md py-4 px-6 sticky top-0 z-50">
+			<div className="max-w-7xl mx-auto flex justify-between items-center">
+				<span className="font-bold text-2xl text-blue-700">DM</span>
 
-  return (
-    <header className='bg-white shadow-md fixed w-full z-50'>
-      <div className='container mx-auto px-4 max-w-6xl'>
-        <nav className='flex justify-between items-center py-4'>
-          <span className='text-2xl font-bold text-blue-900'>
-            <Link href={'/home'}>DM</Link>
-          </span>
-          <button 
-            className='md:hidden text-blue-900 focus:outline-none'
-            onClick={toggleMobileMenu}
-          >
-            {isMobileMenuOpen ? (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-            ): (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-            )}
-          </button>
-          
-          {/* Desktop Menu */}
-          <ul className='hidden md:flex space-x-8'>
-            <li>
-              <Link 
-                href='#home' 
-                className='block py-3 px-4 text-blue-900 font-medium hover:bg-blue-50 hover-text-blue-500 transition-colors' 
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link 
-                href='#about' 
-                className='block py-3 px-4 text-blue-900 font-medium hover:bg-blue-50 hover-text-blue-500 transition-colors' 
-              >
-                About
-              </Link>
-            </li>
-            <li>
-              <a 
-                href="#contact" 
-                className='block py-3 px-4 text-blue-900 font-medium hover:bg-blue-50 hover-text-blue-500 transition-colors' 
+				{/* Desktop Navigation */}
+				<nav className="hidden md:flex space-x-8">
+					{navItems.map((item) => (
+						<button
+							key={item.id}
+							onClick={() => setCurrentSection(item.id)}
+							className={`font-medium ${
+								currentSection === item.id
+									? "text-blue-700 border-b-2 border-blue-700"
+									: "text-blue-500 hover:text-blue-700"
+							}`}
+						>
+							{item.name}
+						</button>
+					))}
+				</nav>
 
-              >
-                Contact
-              </a>
-            </li>
-            <li>
-              <a 
-                href="#projects" 
-                className='block py-3 px-4 text-blue-900 font-medium hover:bg-blue-50 hover-text-blue-500 transition-colors' 
-              >
-                Projects
-              </a>
-            </li>
-          </ul>
-        </nav>
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className='md:hidden bg-white border-t border-blue-100'>
-            <ul className='flex flex-col'>
-              <li>
-                <Link 
-                  href='#home' 
-                  className='block py-3 px-4 text-blue-900 font-medium hover:bg-blue-50 hover-text-blue-500 transition-colors' 
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href='#about' 
-                  className='block py-3 px-4 text-blue-900 font-medium hover:bg-blue-50 hover-text-blue-500 transition-colors' 
-                >
-                  About
-                </Link>
-              </li>
-              <li>
-                <a 
-                  href="#contact" 
-                  className='block py-3 px-4 text-blue-900 font-medium hover:bg-blue-50 hover-text-blue-500 transition-colors' 
+				{/* Mobile Navigation */}
+				<button
+					className="md:hidden text-blue-700"
+					onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+				>
+					{mobileMenuOpen ? <IoCloseSharp /> : <GiHamburgerMenu />}
+				</button>
+			</div>
 
-                >
-                  Contact
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="#projects" 
-                  className='block py-3 px-4 text-blue-900 font-medium hover:bg-blue-50 hover-text-blue-500 transition-colors' 
-                >
-                  Projects
-                </a>
-              </li>
-            </ul>
-          </div> 
-        )}
-      </div>
-    </header>
-  )
-}
+			{/* TODO: Add in fade transition mobile nav */}
+			{mobileMenuOpen && (
+				<nav className="md:hidden pt-4 pb-2 px-2">
+					{navItems.map((item) => (
+						<button
+							key={item.id}
+							onClick={() => {
+								setCurrentSection(item.id);
+								setMobileMenuOpen(false);
+							}}
+							className={`block py-2 px-4 text-blue-500 hover:text-blue-700 ${
+								currentSection === item.id ? "font-bold" : ""
+							}`}
+						>
+							{item.name}
+						</button>
+					))}
+				</nav>
+			)}
+		</header>
+	);
+};
 
-export default Header
+export default Header;

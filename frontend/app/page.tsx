@@ -1,25 +1,21 @@
-
-import Home from '@/app/home/page'
-import About from '@/app/about/page'
-import Header from '@/components/Header'
+import Home from "@/app/home/page";
+import About from "@/app/about/page";
+import Header from "@/components/Header";
 
 const page = () => {
-  return (
-    <>
-    <Header />
-    <main className='min-h-screen bg-blue-50 text-gray-800 font-sans'>
-      <section id='home'>
-      <Home />
-      </section>
-      <section id='about'>
-        <About />
-      </section>
-    </main>
-    </>
+	return (
+		<>
+			<Header />
+			<main className="min-h-screen bg-blue-50 text-gray-800 font-sans flex flex-col items-center justify-center">
+				<section id="home">
+					<Home />
+				</section>
+				<section id="about">
+					<About />
+				</section>
+			</main>
+		</>
+	);
+};
 
-  )
-}
-
-
-
-export default page
+export default page;

@@ -1,24 +1,60 @@
-import React from 'react'
-const page = () => {
-  return (
-    <>
-    <section className='pt-20 min-h-screen flex items-center'>
-      <div className='container mx-auto px-4 max-w-6xl'>
-        <div className='mx-w-lg'>
-          <h1 className='typing-animation text-4xl md:text-5xl font-bold text-blue-900 mb-6'>
-            Daniel Mallett
-          </h1>
-          <p className='text-lg text-gray-500 mb-8 typeing-animation'>
-              A passionate Full Stack Developer with a knack for creating innovative solutions. I specialize in full-stack development, with a focus on building scalable and efficient applications. My goal is to leverage technology to solve real-world problems and enhance user experiences.
-          </p>
-          <a href="#projects" className="bg-blue-500 hover:bg-blue-900 text-white px-6 py-3 rounded font-medium transition-colors duration-300">
-              View my work
-          </a>
-        </div>
-      </div>
-    </section>
-    </>
-  )
-}
+"use client";
+import Image from "next/image";
+import { useState } from "react";
+const Page = () => {
+	const [currentSection, setCurrentSection] = useState("home");
+	return (
+		<>
+			<section className="flex-grow px-6 py-8">
+				<div className="max-w-7xl mx-auto">
+					{currentSection === "home" && (
+						<section className="flex flex-col md:flex-row items-center justify-between gap-12 py-12">
+							<div className="w-full md:1/2">
+								<h1 className="text-4xl md:text-5xl font-bold text-blue-800 mb-4">
+									Hi I&apos;m <span className="text-blue-600">Dan Mallett</span>
+								</h1>
+								<h2 className="text-2xl font-medium text-blue-700 mb-6">
+									Full Stack Develioer
+								</h2>
+								<p className="text-lg text-blue-800 mb-6">
+									I am a full stack developer with a passion for creating
+									beautiful and functional web applications. I have experience
+									in a variety of technologies, including React, Node.js, and
+									MongoDB. I am always looking to learn new skills and improve
+									my craft.
+								</p>
+								<div className="flex space-x-4">
+									<button
+										onClick={() => setCurrentSection("projects")}
+										className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-md flex items-center"
+									>
+										View Projects
+									</button>
+									<button
+										onClick={() => setCurrentSection("contact")}
+										className="border border-blue-600 text-blue-600 hover:bg-blue-50 py-2 px-6 rounded-md"
+									>
+										Contact me
+									</button>
+								</div>
+							</div>
+							<div className="w-full md:w-1/2 flex justify-center">
+								<div className="bg-blue-200 w-64 h-64 md:w-80 md:h-80 rounded-full flex items-center justify-center text-blue-800 font-medium">
+									<Image
+										src={"/dan.jpg"}
+										alt="Dan Mallett"
+										width={320}
+										height={320}
+										className="rounded-full"
+									/>
+								</div>
+							</div>
+						</section>
+					)}
+				</div>
+			</section>
+		</>
+	);
+};
 
-export default page
+export default Page;
