@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseSharp } from "react-icons/io5";
+import Link from "next/link";
 
 const Header = () => {
 	const [currentSection, setCurrentSection] = useState("home");
@@ -22,9 +23,16 @@ const Header = () => {
 				{/* Desktop Navigation */}
 				<nav className="hidden md:flex space-x-8">
 					{navItems.map((item) => (
-						<button
+						<Link
+							href={`#${item.id}`}
 							key={item.id}
-							onClick={() => setCurrentSection(item.id)}
+							onClick={() => {
+								setCurrentSection(item.id);
+								const section = document.getElementById(item.id);
+								if (section) {
+									section.scrollIntoView({ behavior: "smooth" });
+								}
+							}}
 							className={`font-medium ${
 								currentSection === item.id
 									? "text-blue-700 border-b-2 border-blue-700"
@@ -32,7 +40,7 @@ const Header = () => {
 							}`}
 						>
 							{item.name}
-						</button>
+						</Link>
 					))}
 				</nav>
 

@@ -1,7 +1,8 @@
 import Home from "@/app/home/page";
 import About from "@/app/about/page";
 import Header from "@/components/Header";
-
+import Projects from "@/app/projects/page";
+import Contact from "@/app/contact/page";
 const page = () => {
 	return (
 		<>
@@ -12,6 +13,12 @@ const page = () => {
 				</section>
 				<section id="about">
 					<About />
+				</section>
+				<section id="projects">
+					<Projects />
+				</section>
+				<section id="contact">
+					<Contact />
 				</section>
 			</main>
 		</>

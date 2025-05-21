@@ -48,13 +48,55 @@ const Page = () => {
 							))}
 						</div>
 
-						{/* //TODO: Potentially move out of this area just 1 below */}
+						{/* //TODO: Potentially move out of this area just 1 below 
+						// TODO:// add in description of skill and role
+						// */}
 						<h3 className="text-xl font-bold text-blue-700 mb-4">Experiance</h3>
 						<div className="space-y-4">
 							<div className="border-l-4 border-blue-300 pl-4">
 								<h4 className="font-bold text-blue-900">
 									Full Stack Developer
 								</h4>
+								<p className="text-blue-700">MISCS• 2022-Present</p>
+								<p className="text-blue-800">
+									Led development of multiple client projects and mentored
+									junior developers.
+								</p>
+							</div>
+							<div className="border-l-4 border-blue-300 pl-4">
+								<h4 className="font-bold text-blue-900">Web Developer</h4>
+								<p className="text-blue-700">The Coaches Voice • 2019-2022</p>
+								<p className="text-blue-800">
+									Developed and maintained client websites and web applications.
+								</p>
+							</div>
+							<div className="border-l-4 border-blue-300 pl-4">
+								<h4 className="font-bold text-blue-900">Web Developer</h4>
+								<p className="text-blue-700">Full Comms • 2019-2022</p>
+								<p className="text-blue-800">
+									Developed and maintained client websites and web applications.
+								</p>
+							</div>
+							<div className="border-l-4 border-blue-300 pl-4">
+								<h4 className="font-bold text-blue-900">Web Developer</h4>
+								<p className="text-blue-700">Indigo Spark • 2019-2022</p>
+								<p className="text-blue-800">
+									Developed and maintained client websites and web applications.
+								</p>
+							</div>
+							<div className="border-l-4 border-blue-300 pl-4">
+								<h4 className="font-bold text-blue-900">Web Developer</h4>
+								<p className="text-blue-700">Hiyield• 2019-2022</p>
+								<p className="text-blue-800">
+									Developed and maintained client websites and web applications.
+								</p>
+							</div>
+							<div className="border-l-4 border-blue-300 pl-4">
+								<h4 className="font-bold text-blue-900">Web Developer</h4>
+								<p className="text-blue-700">LumiraDX• 2019-2022</p>
+								<p className="text-blue-800">
+									Developed and maintained client websites and web applications.
+								</p>
 							</div>
 						</div>
 					</div>
